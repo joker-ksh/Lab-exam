@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    int m;
+    cout<<"N = ";
+    cin>>n;
+    cout<<" M = ";
+    cin>>m;
+    int ans = n*(n+1)*m*(m+1)/4;
+    cout<<ans;
+    return 0;
+}
