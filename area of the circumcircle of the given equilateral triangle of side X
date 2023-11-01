@@ -1,0 +1,10 @@
+#include<bits/stdc++.h>
+const double pi = 3.14159265358979323846;
+using namespace std;
+int main()
+{
+	float a;
+    cin>>a;
+	cout <<fixed<<setprecision(1)<< (a * a * (pi / 3));
+	return 0;
+}
