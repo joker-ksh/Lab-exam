@@ -1,0 +1,23 @@
+import math
+def count_lattice_points_on_circle(radius):
+    l=set()
+    for x in range(-radius, radius + 1):
+        y_squared = radius ** 2 - x ** 2
+        y = int(math.sqrt(y_squared))
+
+        if y ** 2 == y_squared:
+            if y != 0 :
+                l.add((x,y))
+                l.add((-1*x,y))
+                l.add((x,-1*y))
+                l.add((-1*x,-1*y))
+            else:
+                l.add((x,y))
+    
+    return l
+radius = eval(input())
+result = count_lattice_points_on_circle(radius)
+print(len(result))
+l=list(result)
+l.sort()
+print(l)
