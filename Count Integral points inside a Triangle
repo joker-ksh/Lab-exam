@@ -1,0 +1,19 @@
+def gcd(x, y):
+    while(y):
+        x, y = y, x % y
+    return x
+
+def picks_theorem(x1, y1, x2, y2, x3, y3):
+    area = abs(0.5 * (x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)))
+
+    boundary_points = gcd(abs(x1-x2), abs(y1-y2)) + gcd(abs(x2-x3), abs(y2-y3)) + gcd(abs(x3-x1), abs(y3-y1))
+
+    interior_points = area - (boundary_points / 2) + 1
+
+    return int(interior_points)
+blank = input()
+x1, y1 = map(float, input().strip('()').split(','))
+x2, y2 = map(float, input().strip('()').split(','))
+x3, y3 = map(float, input().strip('()').split(','))
+
+print(picks_theorem(x1, y1, x2, y2, x3, y3))
