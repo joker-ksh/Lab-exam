@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+int manhat(int a, int b, int x, int y) {
+    int val = 0;
+    val += abs(a - x);
+    val += abs(b - y);
+    return val;
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int g[n];
+    int h[n];
+
+    for (int x = 0; x < n; x++) {
+        char input[100];
+        scanf("%s", input);
+        sscanf(input, "%d,%d", &g[x], &h[x]);
+    }
+
+    int dis = 94562;
+    int a1 = 0, a2 = 0, b1 = 0, b2 = 0;
+
+    for (int z = 0; z < n - 1; z++) {
+        for (int w = z + 1; w < n; w++) {
+            int t = manhat(g[z], h[z], g[w], h[w]);
+            if (t < dis) {
+                dis = t;
+                a1 = g[z];
+                a2 = h[z];
+                b1 = g[w];
+                b2 = h[w];
+            }
+        }
+    }
+
+    printf("(%d,%d) & (%d,%d):%d\n", a1, a2, b1, b2, dis);
+
+    return 0;
+}
