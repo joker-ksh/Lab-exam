@@ -1,0 +1,93 @@
+Problem 1: Maximum Manhattan distance between a distinct pair from N coordinates
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+ int n,x,y;
+ cout<<"Enter number of points :";
+ cin>>n;
+ vector<pair<int,int>>points;
+ for(int i=1;i<=n;i++)
+ {
+ cout<<"Enter x coordinate :";
+ cin>>x;
+ cout<<"Enter y coordinate :";
+ cin>>y;
+ points.push_back({x,y});
+ }
+ vector<int>sum;
+ vector<int>diff;
+ for(int i=0;i<n;i++)
+ {
+ sum.push_back(points[i].first+points[i].second);
+ diff.push_back(points[i].first-points[i].second);
+ }
+ sort(sum.begin(),sum.end());
+ sort(diff.begin(),diff.end());
+ cout<<"Maximum ManhaƩan Distance is :"<<max(sum[n-1]-
+sum[0],diff[n-1]-diff[0]);
+}
+
+
+Problem 2: Find the integer points (x, y) with a Manhattan distance of at least N
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+ int m;
+ cout<<"Enter ManhaƩan distance :";
+ cin>>m;
+ if(m%2==0)
+ cout<<"Points are
+:"<<"(0,0)"<<"(0,"<<m<<"),("<<m<<",0),("<<m<<","<<m<<"),("<<m/2
+<<","<<m/2<<")";
+ else
+ cout<<"Points are
+:"<<"(0,0)"<<"(0,"<<m<<"),("<<m<<",0),("<<m<<","<<m<<")";
+}
+
+
+
+Problem 3: Sum of Manhattan distances between all pairs of points
+
+#include <bits/stdc++.h>
+using namespace std;
+int distancesum(int x[], int y[], int n)
+{
+int sum = 0;
+for (int i = 0; i < n; i++)
+ for (int j = i + 1; j < n; j++)
+ sum += (abs(x[i] - x[j]) + abs(y[i] - y[j]));
+return sum;
+}
+int main()
+{
+int x[] = { -1, 1, 3, 2 };
+int y[] = { 5, 6, 5, 3 };
+int n = sizeof(x) / sizeof(x[0]);
+cout << distancesum(x, y, n) << endl;
+return 0;
+}
+
+Problem 4: Find a point such that the sum of the Manhattan distances is minimized
+#include <bits/stdc++.h>
+using namespace std;
+void minDistance(int n, int k, vector<vector<int> >& point)
+{
+ for (int i = 0; i < k; ++i)
+ sort(point[i].begin(), point[i].end());
+ for (int i = 0; i < k; ++i)
+ cout << point[i][(ceil((double)n / 2) - 1)] << " ";
+}
+int main()
+{
+ int n = 4, k = 4;
+ vector<vector<int> > point = { { 1, 5, 2, 4 },
+ { 6, 2, 0, 6 },
+ { 9, 5, 1, 3 },
+ { 6, 7, 5, 9 } };
+ minDistance(n, k, point);
+ return 0;
+}
